@@ -69,6 +69,10 @@ public final class Spawns {
     return "1".equals(spawn.getExecutionInfo().get(ExecutionRequirements.SUPPORTS_WORKERS));
   }
 
+  public static boolean supportsMultiplexWorkers(Spawn spawn) {
+    return "1".equals(spawn.getExecutionInfo().get(ExecutionRequirements.SUPPORTS_MULTIPLEX_WORKERS));
+  }  
+
   /**
    * Parse the timeout key in the spawn execution info, if it exists. Otherwise, return -1.
    */

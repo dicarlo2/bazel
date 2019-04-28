@@ -41,10 +41,10 @@ import java.util.SortedMap;
  * class.
  */
 class Worker {
-  private final WorkerKey workerKey;
-  private final int workerId;
-  private final Path workDir;
-  private final Path logFile;
+  protected final WorkerKey workerKey;
+  protected final int workerId;
+  protected final Path workDir;
+  protected final Path logFile;
 
   private Subprocess process;
   private Thread shutdownHook;

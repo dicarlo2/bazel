@@ -42,6 +42,7 @@ final class WorkerKey {
   private final HashCode workerFilesCombinedHash;
   private final SortedMap<PathFragment, HashCode> workerFilesWithHashes;
   private final boolean mustBeSandboxed;
+  private final boolean proxied;
 
   WorkerKey(
       List<String> args,
@@ -50,7 +51,8 @@ final class WorkerKey {
       String mnemonic,
       HashCode workerFilesCombinedHash,
       SortedMap<PathFragment, HashCode> workerFilesWithHashes,
-      boolean mustBeSandboxed) {
+      boolean mustBeSandboxed,
+      boolean proxied) {
     this.args = ImmutableList.copyOf(Preconditions.checkNotNull(args));
     this.env = ImmutableMap.copyOf(Preconditions.checkNotNull(env));
     this.execRoot = Preconditions.checkNotNull(execRoot);
@@ -58,6 +60,7 @@ final class WorkerKey {
     this.workerFilesCombinedHash = Preconditions.checkNotNull(workerFilesCombinedHash);
     this.workerFilesWithHashes = Preconditions.checkNotNull(workerFilesWithHashes);
     this.mustBeSandboxed = mustBeSandboxed;
+    this.proxied = proxied;
   }
 
   public ImmutableList<String> getArgs() {
@@ -87,6 +90,10 @@ final class WorkerKey {
   public boolean mustBeSandboxed() {
     return mustBeSandboxed;
   }
+
+  public boolean proxied() {
+    return proxied;
+  }  
 
   @Override
   public boolean equals(Object o) {
